@@ -1,0 +1,9 @@
+{
+    "name": "bluefish",
+    "version": "1.0.0",
+    "dependencies": {
+        "express": "latest",
+        "mongodb": "latest",
+        "body-parser": "latest"
+    }
+}
