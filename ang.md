@@ -938,3 +938,198 @@ getProducts(): Observable<IProducts[]> {
   private handleError(err: HttpErrorResponse) {
 }
 ```
+## Subscribing to an observable
+observables are lazy, they don't do anything until you subscribe.
+You subscribe with an observer - this observes the stream and responds to three types of notifications:
+1. next
+2. complete
+3. error
+
+The user object is used to define handler functions that execute on these notifications
+next --> processes the next emitted value, it is called for each value the observable emits
+error --> it executes if there is an error
+complete --> executes on comopletions
+
+```
+x.subscribe()
+x.subscribe(observer)
+x.subscribe({
+  nextFn,
+  errorFn,
+  completeFn
+})
+```
+
+complete is rarely used with http requests because they automatically complete after emitting the single response.
+
+## Unsubscribing from an observable
+
+1. Store the subscription in a variable
+2. Implement the OnDestroy lifecycle hook
+3. Use the subscription variable to unsubscribe
+   
+You subscribe in the `ngOnInit()` 
+e.g. 
+```
+ngOnInit(): void {
+  this.sub = this.hello.getAnswers().subscribe){
+
+  }
+}
+``` 
+Then you unsubscribe in the `ngOnDestroy()`
+```
+ngOnDestroy(): void {
+this.sub.unsubscribe();
+}
+```
+
+# Navigation & Routing
+
+- Routing is component based
+- Angular provides a router module (RouterModule).
+- The router uses a first match win strategy, so the order matters.
+
+
+```
+[
+  { path: 'products', component: ProductListComponent },
+  { path: 'products/:id', component: ProductDetailComponent },
+  { path: 'welcome', component: WelcomeComponent },
+  { path: '', redirectTo: 'welcome', pathMatch":'full' },
+  { path: '**', component: PageNotFoundComponent }, 
+  //wildcard
+]
+```
+<strong>
+Add each rtoute to `forRoot`array
+</strong>
+
+path: url segment for the route
+- no leading slash
+- '' for default route
+- '**' for wildcart route
+
+<strong> when you have routes configured, you need to tie them </strong>
+
+add the RouterLink directive as an attribute
+- clickable element
+- enclose in square brackets
+
+Bind to a link parameters array
+- First element is the path
+- All other elements are route parameters
+
+Add RouterOutlet directive
+- Identifies where to display the routed compobnent's view
+- Specified in the host component's template
+
+```
+<ul> 
+<li><a [routerLink]="['/welcome']">Home</a></li>
+</ul>
+<router-outlet></router-outlet>
+```
+
+## Passing parameters to a route
+
+**app.module.ts - or routing.module.ts**
+```
+{ path: 'products/:id', component: ProductDetailComponent },
+```
+
+**product-list.component.html**
+```
+<td>
+<a [routerLink]="['/products', product.productId]"> {{product.productName}}
+</a>
+</td>
+```
+**product-detail.component.ts**
+```
+import { ActivatedRoute} from '@angular/router`;
+
+constructor (private route: ActivatedRoute) { }
+```
+
+### Reading parameters from a route
+
+**Snapshot: Read the parameter one time**
+```
+this.route.snapshot.paramMap.get('id');
+```
+
+**Observable: Read emitted parameters as they change**
+```
+this.route.paramMap.subscribe(
+  params => console.log(params.get('id'))
+);
+```
+**Specified string is the route parameter name**
+```
+{ path: 'products/:id',
+component: ProductDetailComponent }
+```
+
+## Handling Null and Undefined
+
+? -> safe navigation operator
+it guards against null or undefined values.
+If the product is null or undefined the safe navigation operator simply returns null and does not attempt to access the property.
+```
+product?.productName
+```
+
+alternative is to use ngIf
+
+the safe navigation operator does not work with the ngModel
+## Activating a Route with Code
+
+Routing with code is commonly used when trying to save data. 
+So when you press the button, you also save some data and then re-route back to another page.
+
+```
+import { Router } from '@angular/router';
+constructor (private router: Router) { }
+onBack(): void {
+  this.router.navigate([/'products']);
+}
+```
+
+## Protecting Routes with Guards
+
+CanActivate
+- Guard navigation to a route
+CanDeactivate
+- Guard navigation from a route
+Resolve
+- pre-fetch data before activating a route
+CanLoad
+- prevent asynchronous routing
+
+
+```
+@Injectable({
+  providedInL: 'root'
+})
+
+export class PRoductDetailGuard implements CanActivate {
+  canActivate(): boolean {
+    ...
+  }
+}
+```
+You also have to add the guard in the routing
+
+```
+{ path: 'product/:id', 
+  canActivate: [ ProductDetailGuard ],
+  component: ProductDetailComponent }
+  ```
+
+adding it to the cli: the 2nd G stands for guard
+```
+  ng g g products/product-detail
+  ```
+
+# Angular Modules
