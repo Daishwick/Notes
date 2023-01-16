@@ -26,7 +26,7 @@ Testing tools:
 
 ## Examples
 
-```
+``` html
 {{ product.productCode | lowercase }}
 < img [src] = 'product.imageUrl'
       [title]='product.productName | uppercase'>
@@ -39,7 +39,7 @@ The 1.2-2 means there is 1 number before the . there are 2 behind and no more th
 
 ## Custom Pipe
 
-```
+``` JavaScript
 import { PIpe, PipeTransform } from '@angular/core';
 
 <!-- pipe decorator to define it as a pipe- it's a function so it requires{} -->
@@ -61,7 +61,7 @@ export class ConvertToSpacesPipe implements PipeTransform {
 
 <img src="assets/img/Component_Angular.png">
 
-```
+``` JavaScript
 
 import { Component } from '@angular/core';
 
@@ -84,7 +84,7 @@ convention:
 - Name each component class with a feature name + component
 - root component for an application is called AppComponent
 
-```
+``` JavaScript
 
 pageTitle: string = 'Acme Product Management';
 
@@ -105,7 +105,7 @@ pageTitle: string = 'Acme Product Management';
 - Apply the decorator immediately before the feature you are decorating
 - component always has a template
 
-```
+``` JavaScript
 
 @Component({
 selector: 'pm-root',
@@ -124,7 +124,7 @@ Allows us to use exported members from:
 
 In the example we import from angular core
 
-```
+``` JavaScript
 
 import { Component } from '@angular/core';
 
@@ -191,7 +191,7 @@ _properties are the data elements associated with the class, and methods perform
 
 **As a data type**
 
-```
+``` JavaScript
 
 export interface IProduct {
 productId: number;
@@ -206,7 +206,7 @@ imageUrl: string;
 
 ```
 
-```
+``` JavaScript
 
 products: Iproduct[] = [];
 
@@ -224,7 +224,7 @@ stop(): void;
 
 ```
 
-```
+``` JavaScript
 
 export class myComponent
 implements DoTiming {
@@ -238,8 +238,8 @@ stop(): void {
 }
 
 ```
-
-```
+ 
+``` JavaScript
 
 export interface IProduct {
 productId: number;
@@ -260,7 +260,7 @@ imageUrl: string;
 
 Once you have defined the interface, you can import it as a datatype
 
-```
+``` JavaScript
 
 import { IProduct } from './product';
 
@@ -284,7 +284,7 @@ this.showImage = !this.showImage;
 
 Using the styles property
 
-```
+``` JavaScript
 
 @Component({
 selector:'pm-products',
@@ -296,7 +296,7 @@ styles: ['thead {color: #337AB7;}']
 
 Using the StyleUrl property
 
-```
+``` JavaScript
 
 @Component({
 selector:'pm-products',
@@ -329,7 +329,7 @@ _A Lifecycle hook is an interface we implement to write code when a component li
 
 ## Using a lifecycle hook
 
-```
+``` JavaScript
 
 <!-- Step one -->
 
@@ -389,7 +389,7 @@ Difference - in as in iterating the INdex
 - use the ES 2015 back ticks for multiple lines
 - watch syntax
 
-```
+``` html
 
 template:
 
@@ -403,8 +403,8 @@ template:
 - For longer templates
 - specify the templateUrl Property
 - Define the path to the HTML file
-
-```
+ 
+``` JavaScript
 templateUrl: './product-list.component.html'
 ```
 
@@ -436,7 +436,7 @@ expression is evaluated:
 - **true**: elements added to the DOM
 - **false**: elements removed from the DOM
 
-```
+``` html
 <table *ngI='products'>
 ```
 
@@ -448,7 +448,7 @@ Repeat an elemen and its children in the DOM
 Define the local variable with let
 specify 'of'
 
-```
+``` html
 <tr *ngFor='let product of products'>
 ...
 </tr>
@@ -456,7 +456,7 @@ specify 'of'
 
 # Property Binding
 
-```
+``` html
 <img [src]='product.imageUrl'>
 ```
 
@@ -466,7 +466,7 @@ specify 'of'
 
 **Template**
 
-```
+``` html
 <h1> {{pageTitle}}</h1>
 <img [src]='product.imageUrl'>
 <button (click)='toggleImage()'>
@@ -474,7 +474,7 @@ specify 'of'
 
 **Component**
 
-```
+``` JavaScript
 export class ListComponent {
   pageTitle = 'Product List';
   products: any[] = [...];
@@ -486,7 +486,7 @@ export class ListComponent {
 
 ## Two-way binding
 
-```
+``` JavaScript
 [(ngModel)]
 ```
 
@@ -500,14 +500,14 @@ Use a banana in a box [()]
 
 ### ngModel
 
-```
+``` html
 <div class='col-md-4'>
   <input type='text'
     [(ngModel)]='listFilter' />
 </div>
 ```
 
-```
+``` JavaScript
 @NgModule({
   imports: [ BrowserModule,
   FormsModule],
@@ -529,17 +529,17 @@ Pipe parameters
 
 Example
 
-```
+``` html
 {{ product.price | currency: 'USD': 'symbol': '1.2-2'}}
 ```
 
 # Filtering a List
 
-```
+``` JavaScript
 products: IProduct[] = [...];
 ```
 
-```
+``` JavaScript
 performFilter(): IProduct[] {
   return this.products.filter((product: IProduct) =>
       product.productName.includes(this.listFilter));
@@ -567,7 +567,7 @@ performFilter(): IProduct[] {
 - Properties and their types
 - export it
 
-```
+``` JavaScript
 export interface IProduct {
   productId: number;
   productName: string;
@@ -578,7 +578,7 @@ export interface IProduct {
 
 - Use the interface as a data type
 
-```
+``` JavaScript
 products: IProduct[] = [...];
 ```
 
@@ -589,7 +589,7 @@ products: IProduct[] = [...];
 - implements keyword & interface name
 - Write code for each property & method
 
-```
+``` JavaScript
 import { Component, OnInit } from '@angular/core';
 
 export class ProductComponent implements OnInit {
@@ -617,7 +617,7 @@ export class ProductComponent implements OnInit {
 2. Implement the lifecycle hook interface
 3. Write code for the hook method
 
-```
+``` JavaScript
 import { Component, OnInit } from '@angular/core';
 
 export class ProductComponent implements OnInit {
@@ -635,7 +635,7 @@ Create a class that implements PipeTransform
 Write code for the Transform method
 Decorate the class with the Pipe decorator
 
-```
+``` JavaScript
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
@@ -651,7 +651,7 @@ expor class SpacePipe implements PipeTransform {
 
 Add the pipe to the delcarations array of an Angular module
 
-```
+``` JavaScript
 @NgModule({
   imports: [...],
   declarations: [
@@ -669,7 +669,7 @@ Use the pipe in a template:
 - Pipe name
 - Pipe arguments(separated with colons)
 
-```
+``` JavaScript
 {{ product.productCode | spacePipe: '-'}}
 ```
 
@@ -683,7 +683,7 @@ Use the pipe in a template:
 - Attach to a property of any type
 - Prefix with @ Suffix with ()
 
-```
+``` JavaScript
 export class StarComponent {
   @Input() rating: number;
 }
@@ -697,7 +697,7 @@ export class StarComponent {
 - Use the new keyword to create an instance of the EventEmitter
 - prefix with @; Suffix with ()
 
-```
+``` JavaScript
 export class StarComponent {
   @Output() notify: EventEmitter<string> =
                           new EventEmitter<string>();
@@ -1587,7 +1587,7 @@ creates an observable from an array
 <img src="assets/img/offromfunction.png">
 
 **fromEvent**
-```
+``` JavaScript
 @ViewChild('para') par: Elementref;
 
 ngAfterViewInit(){
@@ -1634,7 +1634,7 @@ https://stackblitz.com/edit/angular-ivy-pgzyfu?file=src/app/app.component.ts
 
 1. **call** .subscribe()
 2. **pass in an Observer** .next(), .error(), .complete
-```
+``` JavaScript
 const sub = apples$.subscribe({
   next: apple => console.log('Apple emitted ${apple}`),
   error: => console.log('Error occurred: ${err}`),
@@ -1661,7 +1661,7 @@ if you subscribe, you should always unsubscribe
 
 **Apply operators in sequence using the Observable's pipe() method**
 
- ```
+ ``` JavaScript
 of(2, 4, 6)
   .pipe(
     map(item => item *2),
@@ -1708,7 +1708,7 @@ of(2, 4, 6)
 - Debugging
 - Performing actions outside of the flow of data(side effects)
 
-```
+``` JavaScript
 of(2, 4, 6)
     .pipe(
       tap(item => console.log(item)),
@@ -1739,7 +1739,7 @@ of(2, 4, 6)
   - e.g. when created by an interval Creation Function
 
 
-```
+``` JavaScript
  of(2, 4, 6)
     .pipe(
       tap(item => console.log(item)),
@@ -1761,7 +1761,7 @@ of(2, 4, 6)
 
 **Only emits the defined number of items**
 
-```
+``` JavaScript
 export class AppComponent implements OnInit {
   name = 'Angular ' + VERSION.major;
 
@@ -1797,7 +1797,7 @@ it is just a function
 ## Summary
 
 - **Use the observable pipe method to pipe emitted items through a sequence of operators**
-```
+``` JavaScript
 from([20, 15, 10, 5])
 .pipe(
   tap(item => console.log(item)),
@@ -1821,7 +1821,7 @@ from([20, 15, 10, 5])
  - Leverage RxJS operators; transform, compose and combine
  - React to actions
 
-- Importoves performances
+- Imptoves performances
 - Handles states
 - Reacts to users actions
 - simplifies the code
@@ -1839,7 +1839,7 @@ from([20, 15, 10, 5])
 ### Common Pattern with an Async Pipe
 
 **Product List Component**
-```
+``` JavaScript
 products: Product[] = [];
 
 constructor(private productService: ProductService){ }
@@ -1851,7 +1851,7 @@ ngOnInit(): void {
 ```
 **Product List Component** - making it more reactive
 the dollar sign indicates that it's an observable and not an array
-```
+``` JavaScript
 products$: Observable<Product[]>;
 
 constructor(private productService: ProductService){ }
@@ -1862,7 +1862,7 @@ ngOnInit(): void {
 
 ```
 **Product List Template**
-```
+``` html
 <div *ngIf="products">
 <table>
   <tr *ngFor="let product of products">
@@ -1875,7 +1875,7 @@ ngOnInit(): void {
 
 
 **Product List Template** - making it work with the new Observable property
-```
+``` html
 <div *ngIf="products$ | async as products">
 <table>
   <tr *ngFor="let product of products">
@@ -1915,7 +1915,7 @@ catchError(this.handleError);
   - Replace the errored Observable to continue after an error occurs
 
 **Example**
-```
+``` javascript
 of(2, 4, 6)
   .pipe(
     map(i => {
@@ -1953,7 +1953,7 @@ of(2, 4, 6)
 **Error Handling: Service**
 
 Product Service
-```
+``` javascript
 getProducts(): Observable<Product[]> {
 return this.http.get<Product[]>(this.ProductsUrl)
   .pipe(
@@ -1966,7 +1966,7 @@ return this.http.get<Product[]>(this.ProductsUrl)
 }
 ```
 Product Component
-```
+``` javascript
 this.product$ = this.productService.getProducts()
   .pipe(
     catchError( err => {
@@ -1984,11 +1984,11 @@ this.product$ = this.productService.getProducts()
 *Angular uses change detection to track changes to application data so that it knows when to update the UI*
 
 | Default                                                   | OnPush                                                                                              |
-|-----------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| --------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | Uses the default checkAlways strategy                     | Improves performance by minimizing change detection cycles                                          |
 | Every component is checked when: - Any change is detected | Component is only checked when: - @Input properties change - Event emits - A bound Observable emits |
 
-```
+``` javascript
 @Component({
   templateUrl: './product-list.component.html
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -2068,6 +2068,7 @@ products$ = this.productService.products$
   - ```return EMPTY;```
 
 ## Mapping Returned DATA
+<hr/>
 
 **Why Map returned data?**
 - Modify a value
@@ -2105,6 +2106,8 @@ products$ = this.http.get<Product[]>(this.productsUrl);
 ```
 
 ## Combining data streams
+<hr/>
+
 
 **Why combine data streams?**
 - Map id to a string
@@ -2118,16 +2121,19 @@ products$ = this.http.get<Product[]>(this.productsUrl);
 - withLatestFrom
 
 **Types of Combination Operators/Functions**
+
 <img src="./assets/img/MarbleCombinationsOperatorsFunctions.png">
 
 ## RxJS Creation Function: combineLatest
+<hr/>
 
 **Creates an Observable whose values are defined:**
 - using the latest values from each input Observable
   ``` combineLAtest([a$, b$, c$])```
   - static creation function, not a pipeable operator
 
-**Marble Diagram: combine latest **
+**Marble Diagram: combine latest**
+
 <img src="./assets/img/marblediagramCombineLatest.png">
 
 CombineLatest will only emit once all values have been observed. So it always has the same amount of elements. 
@@ -2148,6 +2154,7 @@ This also means that some elements may be dropped.
 - to reevaluate state when an action occurs
 
 ## RxJS Creation Function: forkJoin
+<hr/>
 
 **Creates an Observable whose value is defined:**
 - Using the last value from each input Observable
@@ -2175,6 +2182,8 @@ This also means that some elements may be dropped.
   - such as action streams
 
 ## RxJS Operator: withLatestFrom
+<hr/>
+
 **Creates an Observable whose values are defined:**
 - Using the latest values from each input Observable
 - But only when the source observable emits
@@ -2203,13 +2212,15 @@ This also means that some elements may be dropped.
 - To regulate the output of the other Observables
 
 ## Mapping an Id to a string
-```
+<hr/>
+
+```JavaScript
 products$ = this.http.get<Product[]>(this.url);
 ```
-```
+```JavaScript 
 productCategories$ = this.http.get<ProductCategory[]>(this.categoriesUrl);
 ```
-```
+``` JavaScript
 productsWithCategory$ = combineLatest([
   this.products$,
   this.productCategories$
@@ -2225,3 +2236,773 @@ productsWithCategory$ = combineLatest([
   );
 ])
 ```
+**Combination Features Checklist**
+- **combineLatest**: Emits any time a new value is emitted from any of the input Observables
+- ```combineLatest([a$, b$, c$])```
+- **forkJoin:** Emits only the last emitted values from each input Observable after they complete
+- ```forkJoin([a$, b$, c$])```
+- **withLatestFrom:** Emits anyu time a new value is emitted from the source Observable
+- ```a$.pipe(withLatestFrom(b$, c$)) ```
+
+They all emit an array in sequance [a1, b1, c1]
+
+## Reacting to actions
+<hr/>
+
+### Filtering Emitted items
+<hr/>
+
+**RxJS Operator: filter**
+
+- Filters to the items that match criteria specified in a provided function `filter(item => item === 'Apple')`
+- Similar to the array filter method
+
+**Used for:**
+- Emitting items that match specific criteria 
+
+<img src="./assets/img/Marble_diagram_filter.png">
+
+**Filter is a transformation operator**
+- Subscribes to its input Observable
+- Creates an output Observable
+**When an item is emitted**
+- Item is evaluated as specified by the provided function
+- If the evaluation returns true, item is emitted to the output Observable
+
+### Data Stream vs. Action Stream
+<hr/>
+
+**Observable** - from the point of view of the subscriber
+- an Observable is read only
+- subscribe to react to its notifications
+- can't emit anything into it
+
+**Subscriber**
+- An Observer with additional featurs to unsubscribe
+
+**Observer**
+- Observes and responds to notifications from an Observable
+- An interface with next, error and complete methods
+
+*A **Subecject** is a special type of Observable that implements the Observer interface*
+
+### Subject & behaviorSubeject
+<hr/>
+
+**Subject**
+**A special type of Observable that is**
+- An Observable
+- An Observer
+
+- `actionSubject = new Subject<string>();`
+
+**call** next() to emit items
+
+- `this.actionSubject.next('tools');`
+
+**call** subscribe() to receive notifications 
+
+- `this.actionSubject.subscribe(
+    item => console.log(item)
+  );`
+
+  **Unicast vs. Multicast**
+
+  **Unicast** - emits to a single subscriber; each subscribe gets a new Observable
+
+  **Subject is multicast**
+  This means the "observable" (Subject) 
+
+  **Behavior Subject**
+  **A special type of Subjec that**:
+  - Buffers its last emitted value
+  - Emits that value to any late subscribers
+  - Requires a default value
+  - Emits that default value if it hasn't yet emitted any items
+  - `aSub = new BehaviorSubject<number>(0);`
+
+``` javaScript
+private categorySelectedSubject = new Subject<number>();
+categorySelectedAction$ = this.categorySelectedSubject.asObservable();
+
+onSelected(categoryId: string): void {
+  this.categorySelectedSubject.next(+categoryId);
+}
+```
+```html
+<select (change)="onSelected($event.target.value)">
+  <option *ngFor="let category of categories$ | async"
+            [value]="category.id">{{ category.name}}
+  </option>
+```
+
+
+**Reacting to actions**
+- Create an action stream (Subject/BehaviorSubject)
+- Combine the action stream and data stream to react to each emission from the action stream
+- Emit a value to the action stream when an action occurs
+
+
+1. Create an action stream
+ ``` js
+private categorySelectedSubject = new Subject<number>();
+  categorySelectedAction$ = this.categorySelectedSubject.asObservable();
+  ``` 
+2. Combine the action stream with a data stream
+```js
+  products$ = combineLatest([
+    this.productService.productsWithCategory$,
+    this.categorySelectedAction$
+  ])
+    .pipe(
+      map(([products, selectedCategoryId]) =>
+        products.filter(product =>
+          selectedCategoryId ? product.categoryId === selectedCategoryId : true
+        )),
+      catchError(err => {
+        this.errorMessage = err;
+        return EMPTY
+      })
+    );
+```
+3. Emit a value to the action
+
+```js
+onSelected(categoryId: string): void {
+    this.categorySelectedSubject.next(+categoryId);
+  }
+
+```
+
+This problem here is that there is no initial value. This flow therefor only works when a category is selected
+
+### Starting with an Initial value
+ 1. You can use a startWith operator
+
+```js
+this.categorySelectedAction$
+  .pipe(
+      startWith(0)
+  )
+```
+
+2. Or you can use a BehaviorSubject instead of a Subject
+```js
+private categorySelectedSubject = new Behaviorsubject<number>(0);
+categorySelectedAction$ = this.categorySelectedSubject.asObservable();
+```
+
+### RxJS Operator: startWith
+<hr/>
+
+**Provides an initial value**
+```startWith('orange')```
+- Emits its argument(in order)
+- then emits from the source
+
+ **Used for:**
+- Emitting initial item(s)
+
+
+**RxJSOperator: startWith**
+- startWith is a combination operator 
+  -  Subscribes to its input Observable
+  -  Creates an output Observable
+  -  When subscribed, synchronously emits all provided values
+-  **when an item is emitted**
+   -  Item is emitted to the output Observable
+
+**Initial value(s) must be the same type as the input Observable emissions**
+
+## Checklist Subject & BehaviorSubject
+<hr/>
+
+**Subject**: special type of Observable that is both:
+- An Observable with a subscribe() method
+- An Observer with next(), error(), complete() methods
+  
+`actionSubject = new Subject<string>();`
+
+
+**BehaviorSubject**: Special type of Subject that:
+- Buffers its last emitted value
+- Emits that value to any late subscribers
+- requires a default value
+- Emits that default value if it hasn't yet emitted any items
+
+
+`actionSubject = new BehaviorsSubject<number>(0);`
+
+
+Use Subject if you don't need an initial value
+
+Use BehaviorSubject if you want an initial value
+- important when using CombineLatest
+
+**Filter**: Emits items that match specified criteria
+`filter( item => item === 'apple')`
+
+**startWith**: Emits specified values, then the source values
+`startWith('Orange')`
+
+## More RxJS examples
+<hr/>
+
+### Errors
+<hr/>
+
+```js
+private categorySelectedSubject = new BehaviorSubject<number>(0);
+categorySelectedAction$ = this.categorySelectedSubject.asObservable();
+
+   .pipe(
+      catchError(err => {
+        this.errorMessageSubject$.next(err);
+        return EMPTY;
+      })
+```
+
+### State
+<hr/>
+
+- view state
+- user information
+- entity data
+- user selection and input
+
+**Updating Data**
+- let the backend handle it
+- treat the data as read-only
+- issue a PUT, POST or DELETE
+- get to get the current data
+- keeps the data "fresh"
+- Could have performance impact
+
+
+- Let an Observable handle it
+- define an action for update opderations 
+- on each update:
+  - issue a PUT, POST, or DELETE
+  - incorporate the changes
+  - UI automatically updates
+
+**RxJS operator: scan**
+- operator when managing state
+- accumulates items in an Observable
+- `scan((acc, curr) => acc + curr)`
+**For each emitted item**
+- the accumulator function is applied
+- the result is buffered and emitted
+
+**Used for:**
+- Encapsulating and managing state
+- Totaling amounts
+- Accumulating items into an array
+
+<img src="./assets/img/marble_diagram_scan.png">
+
+**Initial state**
+- Uses the provided seed value as the initial state
+- If no seed is provided it uses the first value from the source
+
+
+<img src="./assets/img/marble_diagram_scan_array.png"> 
+
+**Scan**
+**is a transformation operator**
+- subscribes to its input observable
+- creates an output observable
+
+Seed, if defined, is used as the initial state
+otherwhise, the first emitted value is used as the initial state
+
+Once initial state is set, when an item is emitted
+
+## RxJS Creation Funnction: merge
+<hr/>
+
+- Combines multiple Observables by mergin their emissions
+- `merge(a$, b$, c$)`
+- Is a static creation function, not a pipeable operators
+
+**Used for:**
+- Combining sequences of similar types to blend their emitted values
+
+<img src="./assets/img/marble_diagram_merge.png">
+
+**RxJS Creation function: merge**
+**Merge is a combination function**
+- takes in a set of Observables, subscribes
+- Creates an output Observable
+
+**When an item is emitted from any Observable**
+- Item is emitted to the output Observable
+
+**Completes when all input Observables complete**
+
+``` js
+  private productInsertedSubject = new Subject<Product>();
+  productInsertedAction$ = this.productInsertedSubject.asObservable();
+
+  productsWithAdd$ = merge(
+    this.productsWithCategory$,
+    this.productInsertedAction$
+  ).pipe(
+    scan((acc, value) =>
+      (value instanceof Array) ? [...value] : [...acc, value], [] as Product[])
+  )
+```	
+
+## Caching Observables
+<hr/>
+
+- retain retrieved data locally
+- reuse previously retrieved data
+- stored in memory external
+
+
+**Why Caching?**
+- Improves responsiveness
+- Reduced bandwith and network consumption
+- Improves performance
+- Reduced backend server load
+- Reduces redundant computations
+
+### Classic caching pattern
+
+``` JS
+private products: Product[] = [];
+
+getProductS(): Observable<Product>{
+  if(this.products) {
+    return of(this.products);
+  }
+  return this.http.get<Product[]>(this.url)
+  .pipe(
+    tape(data => this.products = data),
+    catchError(this.handleError)
+  );
+}
+```
+
+**Declarative Caching Pattern**
+``` js
+private url = 'api/products';
+
+products$ = this.http.get<Product[]>(this.url)
+.pipe(
+  shareReply(1),
+  catchError(this.handleError)
+)
+```
+
+### RxJS Operator: sharereplay
+<hr/>
+
+**Shares its input Observable with other subscribers**
+**Replay the defined number of emissions on subscription**
+`shareReply(1)`
+**Used for:**
+- Sharing Observables
+- Caching data in the application
+- Replaying emissions to late subscribers
+
+<img src="./assets/img/Marble_diagram_shareReplay.png">
+
+**RxJS Operator: shareReplay**
+- is a multicast operator
+- returns a subject that shares a single subscription to the underlying source
+- takes in an optional buffer size, which is the numberof items cached and replayed
+- on a subscribe it replays the specified number of emissions
+- the item stays cached forever, even after there are no more subscribers
+
+### RxJS Operator: share
+<hr/>
+
+**share:**
+- By default, doesn't have a buffer
+- Doesn't replay that buffer
+- `share(config)`
+
+Set configuration options
+```js
+share({
+  connector: () => new ReplaySubject(1),
+  resetOnComplete: false,
+  resetOnError: false,
+  resetOnRefCountZero: false
+})
+```
+
+**Retain retrieved data in a service**
+- No need for another HTTP request
+- Reduces redundant computations
+- Improves performance and responsiveness
+
+
+**Cache invalidation**
+Evaluate:
+- fluidity of data
+- Users' behavior
+
+Consider
+- invalidating the cache on a time interval
+- Allowing the user to control when data is refreshed
+- Always getting fresh data on update operations
+```js
+private refresh = new BehaviorSubject<void>(undefined);
+
+product$ = this.refresh
+.pipe(
+  mergMap(() => this.http.get<Product[]>(this.url)
+  .pipe(
+    catchError(this.handleError)
+  )
+  ));
+```
+
+## High-order Mapping Operator
+<hr/>
+
+Don't use nested subscriptions in your code
+
+**Higher-order mapping operators flatten higher-order Observables**
+
+`SupplierService.suppliersWithMap$: Observable<Observable<Supplier>> `
+This is a higher-order Observable
+
+**Higher-order Mapping Operators**
+
+- Family of operators: xxxMap()
+Map each value
+- from a source (outer) Observable
+- to a source (inner) Observable
+- Automatically subscribe to/unsubscribe from inner Observables
+- Flatten the result
+- Emit the resulting values to the output Observable
+
+concatMap - mergeMap - switchMap
+
+### RxJs Operator: concatMap
+- Higher-order mapping + concatenation
+- Transforms each emitted item to a new (inner) Observable as defined by a function
+- `concatMap(i => of (i))`
+- it waits for each inner Observable to complete before processing the next one
+- Concatenates their results in sequence
+
+concatMap: relay race
+1. Runners are queued
+2. Only one runner runs at a time
+3. A runner must complete before the next runner can execute
+4. Runners retain their order
+
+**RxJS Operator: concatMap**
+
+concatMap is a transformation operator
+- subscribes to its input Observable
+- Creates an output Observable
+
+When an item is emitted, it's queued
+- item is mapped to an inner Observable as specified by the provided function
+- Subscribes to the inner Observable
+- Waits
+- Inner Observable emissions are concatenated to the output Observables
+- When the inner Observable completes, then it processes the next item
+
+**Used for:**
+- To wait for the prior Observable to complete before starting the next one
+- To process items in sequence
+
+Examples:
+- from a set of ids, get data in sequence
+- from a set of ids, update data in sequence
+
+### RxJS Operator: mergeMap
+<hr/>
+
+- higher-order mapping + merging
+- Transforms each emitted item to a new (inner) Observable as defined by a function
+-  `mergeMap(i => of (i))`
+- It executes inner Observables in parallel
+- And merges their results
+
+mergeMap -> 800 meter race
+- Runners start concurrently
+- they all merge into the lower lanes
+- The runners complete based on how quickly they finish
+
+**RxJS Operator: mergeMap (flatMap)**
+mergeMap is a transformation operator
+- subscribes to its input Observable
+- Creates an output Observable
+
+
+When each item is emitted
+- item is mapped to an inner Observable as specified by a provided function
+- Subscribes to the inner Observable
+- Inner Observable emissions are merged to the output Observable
+
+**Used for:**
+- to process in parallel
+- When order doesn't matter
+
+examples:
+- From a set of ids, retrieve data (order doesn't matter)
+
+### RxJs Operator: switchMap
+<hr />
+
+- higher-order mapping + switching
+- Transforms each emitted item to a new (inner) Observable as defined by a function
+- `switchMap(i => of(i))`
+- Unsubscribes the prior inner Observable and switches to the new inner Observable
+
+**RxJs Operator: switchMap**
+switchMap is a transformation operator
+- Subscribes to its input Observable
+- Creates aan output Observable
+
+When an item is emitted:
+- Item is mapped to an inner Observable as specified by the provided function
+- Switches to this inner Observable
+  - Unsubscribes from any propr inner Observable
+  - Subscribes to the new Observable
+- Inner Observable emissions are merged to the output Observable
+
+**Used for:**
+- To stop any prior Observable before switching to the next one
+
+Examples:
+- type ahead or auto completion
+- User selection from a list
+
+``` js
+  suppliersWithConcatMap$ = of(1, 5, 8)
+    .pipe(
+      tap(id => console.log('concatMap source Observable', id)),
+      concatMap(id => this.http.get<Supplier>(`${this.suppliersUrl}/ ${id}`))
+    )
+
+  suppliersWithMergeMap$ = of(1, 5, 8)
+    .pipe(
+      tap(id => console.log('mergeMap source Observable', id)),
+      mergeMap(id => this.http.get<Supplier>(`${this.suppliersUrl}/ ${id}`))
+    )
+  suppliersWithSwitchMap$ = of(1, 5, 8)
+    .pipe(
+      tap(id => console.log('switchMap source Observable', id)),
+      switchMap(id => this.http.get<Supplier>(`${this.suppliersUrl}/ ${id}`))
+    )
+
+  constructor(private http: HttpClient) {
+    this.suppliersWithConcatMap$.subscribe(
+      item => console.log('concatMap result', item));
+    this.suppliersWithMergeMap$.subscribe(
+      item => console.log('mergeMap result', item));
+    this.suppliersWithSwitchMap$.subscribe(
+      item => console.log('switchMap result', item));
+    // this.suppliersWithMap$.subscribe(o => o.subscribe(
+    //   item => console.log('map result', item)
+    // ));
+  }
+```
+<img src="./assets/img/higher_order_mapping.png">
+
+## Summary
+<hr/>
+
+<img src="./assets/img/higher_order_observable.png">
+
+**Use higher-order mapping operators**
+- To map emitted items to a new Observable
+- Automatically subscribe to and unsubscribe from that Observable
+- And emit the results to the output Observable
+
+**Higher-order mapping operator functions**
+- take in an item and return an Observable
+
+**Use instead of nested subscribe e.a. don't use nested subscriptions.....**
+
+**concatMap**
+- Waits for each inner Observable to complete before processing the next one
+
+**mergeMap**
+- Processes inner Observables in parallel and merges the result
+
+**switchMap**
+- Unsubscribes from the prior inner Observable and switches to a new one
+
+See the developer tools screenshot for more info.
+
+**forkJoin**
+
+**Get it all**
+```js
+  selectedProductSuppliers$ = combineLatest([
+    this.selectedProduct$,
+    this.supplierService.suppliers$
+  ]).pipe(
+    map(([selectedProduct, suppliers]) =>
+    suppliers.filter(supplier => selectedProduct?.supplierIds?.includes(supplier.id))
+    )
+  );
+
+```
+
+**Just in time**
+```js
+
+ selectedProductSuppliers$ = this.selectedProduct$
+    .pipe(
+      filter(product => Boolean(product)),
+      switchMap(selectedProduct => {
+        if(selectedProduct?.supplierIds){
+          return forkJoin(selectedProduct.supplierIds.map(supplierId =>
+          this.http.get<Supplier>(`${this.suppliersUrl}/${supplierId}`)))
+        } else {
+          return of([]);
+        }
+      }),
+      tap(suppliers => console.log('product suppliers', JSON.stringify(suppliers)))
+    )
+
+```
+
+Get it all vs just in time
+
+<img src="./assets/img/related_data_streams.png">
+
+### Page title - ancillary streams
+
+```js
+
+  pageTitle$= this.product$
+    .pipe(
+      map(p => p ? `Product Detail for: ${p.productName}`: null)
+    );
+
+```
+
+### Multiple Async Pipes
+<hr/>
+
+you combine all async pipes with vm$ (viewmodel)
+
+``` js
+  vm$ = combineLatest([
+    this.product$,
+    this.productSuppliers$,
+    this.pageTitle$
+  ])
+    .pipe(
+      filter(([product]) => Boolean(product)),
+      map(([product, productSuppliers, pageTitle]) =>
+        ({product, productSuppliers, pageTitle}))
+    );
+```
+
+## Keypoints, tips, common issues RxJS
+<hr/>
+**RxJS Operators:**
+- pipe emitted items through a sequence of operators
+- an operator subscribes to its input Observable
+- and creates an output observable
+
+```js
+of(2, 4 , 6)
+  .pipe(
+    map(itme => item * 2),
+    tap(item => console.log(item))
+  );
+```
+
+**Use the async Pipe**
+- Handles subscribe and unsubscribe
+  - When the page is initialized
+  - and when the page is destroyed
+  - Emits into a variable defined in the as clause
+
+```js
+<div *ngIf="products$ | async as products">
+  <table>
+    <tr *ngFor="let product of products">
+      <td>{{ product.productName }}</td>
+      <td>{{ product.productCode }}</td>
+    </tr>
+  </table>
+</div>
+```
+
+**Data Streams**
+- Emits one item, the response
+- After emitting the response, the stream completes
+- The response is often an array
+- To transform the array element:
+  - Map the emitted array
+  - Map each array element
+  - Transform each array element
+
+**Action streams**
+- only emits if it is active
+- If the stream is stopped it won't emit
+- An unhandled error causes the stream to stop
+- Catch the error and replace the errored Observable
+   - don't replace an errored action Observable with EMPTY
+  - Replace with a default or empty value
+
+**Hot and cold observables**
+
+Cold:
+- Doesn't emit until subscribed to Unicast
+```js
+product$ = this.http.get<Product[]>(url)
+              .subscribe(); 
+```
+
+Hot:
+- Emits without subscribers Multicast
+```JS
+productSubject = new Subject<number>();
+this.productSubject.next(12)
+```
+
+**Combination Operators/Creation Functions**
+
+Don't emit until each input Observable emits at least once
+- combineLatest
+- forkJoin
+- withLatestFrom
+
+Action stream created with a Subject does not immediately emit
+
+When combining an action stream, consider using a BehaviorSubject since its emits a default value
+
+**Nested Subscriptions**
+replace them all with higher-order mapping operators
+
+**Break up large pipelines**
+smaller pipelines:
+- easier to read
+- to debug
+- to maintain
+- more readily reusable
+- can be bound to the UI
+
+**Debugging Observables**
+
+tap tap tap
+
+Use the tap Operator
+`tap(data => console.log(JSON.stringify(data)))`
+
+Hover over the Observable to view type and maybe other information
+
+1. Is there a subscription?
+2. Is there an operator waiting for completion?
+3. Walk through the flow:
+   1. start at the source (http request perhaps?)
+   2. Walk through the pipelines and add tap
+   3. Follow through the UI
+
+Draw your own marble diagram!
+(also nice to do beforehand so you have an idea of the flow)
